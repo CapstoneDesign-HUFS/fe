@@ -1,0 +1,46 @@
+/* variables.css 스타일 */
+
+/* =======================
+CSS Design System Variables
+   ======================= */
+
+:root {
+    /* 🎨 Color System */
+    --color-primary: #90dd00;
+    --color-primary-hover: #71ad00;
+    --color-secondary: #62ff00;
+    --color-background: #f8f9fa;
+    --color-light: #ffffff;
+    --color-dark: #343a40;
+    --color-border: #dee2e6;
+    --color-muted: #999999;
+    --color-danger: #dc3545;
+    --color-success: #28a745;
+  
+    /* ✍️ Typography */
+    --font-main: 'Noto Sans KR', sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-lg: 18px;
+    --font-size-title: 24px;
+    --font-size-subtitle: 20px;
+  
+    /* 📐 Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+  
+    /* 🟦 Radius / Shadow */
+    --radius-base: 8px;
+    --radius-round: 100px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.15);
+  
+    /* 📏 Layout */
+    --max-width-container: 1200px;
+    --height-header: 64px;
+    --height-footer: 48px;
+  }
+  

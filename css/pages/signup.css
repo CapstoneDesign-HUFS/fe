@@ -1,0 +1,66 @@
+/* signup.css 스타일 */
+.signup-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background-color: #f3f3f3;
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.signup-title {
+  font-size: var(--font-size-title);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.signup-form .form-control,
+.signup-form .form-select {
+  border-radius: var(--radius-base);
+}
+
+.signup-form .form-control,
+.signup-form .form-select,
+.signup-form .btn {
+  border-radius: var(--radius-base);
+  font-size: 16px;
+}
+
+.signup-form .input-group .btn {
+  padding: 0 16px;
+}
+
+.signup-form .form-check-label {
+  font-size: 14px;
+}
+
+.signup-form .btn-primary {
+  margin-top: 16px;
+}
+
+
+.form-check-label a {
+  color: var(--color-primary);
+}
+.form-check-label a:hover {
+  text-decoration: underline;
+}
+
+.btn-outline-secondary {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.form-select {
+  background-color: #fff;
+  border: 2px solid var(--color-primary);
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+

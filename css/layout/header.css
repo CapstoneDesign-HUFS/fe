@@ -1,0 +1,52 @@
+/* ====================
+Header 스타일
+   ==================== */
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+  }
+  
+  .navbar-nav .nav-link {
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: var(--color-primary);
+  }
+  
+  /* 햄버거 버튼 정렬 및 사이즈 */
+  .navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+  }
+  
+  /* 햄버거 버튼 아이콘 색상 */
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(80, 80, 80, 0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  /* 모바일일 때 메뉴 수직 정렬 */
+  @media (max-width: 768px) {
+    .navbar-nav {
+      text-align: right;
+    }
+  
+    .navbar-collapse {
+      background-color: #fff;
+      padding-bottom: 1rem;
+    }
+  }
+  
