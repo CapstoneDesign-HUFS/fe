@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>회원가입 완료</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4faf5;
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .btn-lime {
+      background-color: #c8ec3c;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card text-center">
+    <h2 class="fw-bold mb-3">회원가입 완료</h2>
+    <p class="fs-5">환영합니다<br><strong id="welcomeName">000</strong> 님</p>
+    <button class="btn btn-lime mt-3 px-4 py-2" onclick="window.close()">닫기</button>
+  </div>
+
+  <script>
+    const name = new URLSearchParams(location.search).get("name");
+    if (name) {
+      document.getElementById("welcomeName").textContent = name;
+    }
+  </script>
+</body>
+</html>
