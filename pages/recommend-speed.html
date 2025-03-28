@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>보행속도 설정</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -61,10 +61,22 @@
 
   <footer id="footer"><!-- include.js 삽입 --></footer>
 
+  <!-- ❗ 경고 모달 -->
+  <div class="modal fade" id="speedErrorModal" tabindex="-1" aria-labelledby="speedErrorLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4">
+        <h5 class="modal-title" id="speedErrorLabel">⚠️ 속도 설정 오류</h5>
+        <p class="mt-2">최고속도는 반드시 최저속도보다 커야 합니다.</p>
+        <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">확인</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/common.js"></script>
 
   <script>
+    // 유저 정보 로딩
     const user = {
       name: localStorage.getItem('userName') || '김민지',
       age: localStorage.getItem('userAgeGroup') || '20대',
@@ -91,16 +103,37 @@
     document.getElementById('maxFastWalk').value = user.speeds.maxFastWalk;
     document.getElementById('maxRun').value = user.speeds.maxRun;
 
-    // 저장
+    // 저장 함수
     function saveSpeed() {
-      localStorage.setItem('minWalk', document.getElementById('minWalk').value);
-      localStorage.setItem('minFastWalk', document.getElementById('minFastWalk').value);
-      localStorage.setItem('minRun', document.getElementById('minRun').value);
-      localStorage.setItem('maxWalk', document.getElementById('maxWalk').value);
-      localStorage.setItem('maxFastWalk', document.getElementById('maxFastWalk').value);
-      localStorage.setItem('maxRun', document.getElementById('maxRun').value);
-      window.location.href = "index.html"; // 다음 페이지 이동
+      const speeds = {
+        minWalk: parseFloat(document.getElementById('minWalk').value),
+        minFastWalk: parseFloat(document.getElementById('minFastWalk').value),
+        minRun: parseFloat(document.getElementById('minRun').value),
+        maxWalk: parseFloat(document.getElementById('maxWalk').value),
+        maxFastWalk: parseFloat(document.getElementById('maxFastWalk').value),
+        maxRun: parseFloat(document.getElementById('maxRun').value)
+      };
+
+      if (
+        speeds.maxWalk <= speeds.minWalk ||
+        speeds.maxFastWalk <= speeds.minFastWalk ||
+        speeds.maxRun <= speeds.minRun
+      ) {
+        const modal = new bootstrap.Modal(document.getElementById('speedErrorModal'));
+        modal.show();
+        return;
+      }
+
+      for (const key in speeds) {
+        localStorage.setItem(key, speeds[key]);
+      }
+
+      window.location.href = "index.html"; // 다음 페이지로 이동
     }
   </script>
 </body>
 </html>
+
+
+
+

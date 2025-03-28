@@ -28,9 +28,13 @@
             <input type="text" id="user-birth" class="form-control" readonly />
           </div>
           <div class="col-6">
-            <label for="user-gender" class="form-label">성별</label>
-            <input type="text" id="user-gender" class="form-control" readonly />
-          </div>
+            <label for="sexselect" class="form-label d-block">성별</label>
+            <select id="sexselect" class="form-select text-center shadow-sm rounded-pill" required>
+              <option value="" disabled selected>성별 선택</option>
+              <option value="여성">여성</option>
+              <option value="남성">남성</option>
+            </select>
+          </div>             
         </div>
 
         <div class="d-flex gap-2 justify-content-center">
