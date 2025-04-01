@@ -56,3 +56,40 @@ Global Style Import
   background-color: var(--color-primary) !important;
   color: #fff !important;
 }
+
+/* ======== 반응형 모바일 설정 (최대 576px) ======== */
+@media (max-width: 576px) {
+  h5.user-summary {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .speedbox .btn {
+    font-size: 0.9rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .btn-main {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .btn-outline-primary {
+    padding: 0.6rem 0.3rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  label.btn-outline-primary {
+    line-height: 1.4;
+  }
+
+  .btn-check:checked + label {
+    background-color: var(--color-primary-hover);
+    color: #fff;
+  }
+}
+
