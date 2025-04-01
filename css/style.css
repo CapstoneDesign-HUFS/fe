@@ -57,39 +57,41 @@ Global Style Import
   color: #fff !important;
 }
 
-/* ======== 반응형 모바일 설정 (최대 576px) ======== */
+/* =================================== */
+/* 모바일 전용 반응형 스타일 (최대 576px) */
 @media (max-width: 576px) {
-  h5.user-summary {
-    font-size: 1.1rem;
-    line-height: 1.6;
+  html {
+    font-size: 14px;
   }
 
-  .speedbox .btn {
-    font-size: 0.9rem;
-    padding: 0.75rem 0.5rem;
+  body {
+    padding: 0;
   }
 
-  .btn-main {
-    font-size: 1rem;
-    padding: 0.8rem 1rem;
-  }
-
-  .btn-outline-primary {
-    padding: 0.6rem 0.3rem;
-  }
-
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  label.btn-outline-primary {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.2rem;
     line-height: 1.4;
   }
 
-  .btn-check:checked + label {
-    background-color: var(--color-primary-hover);
-    color: #fff;
+  .btn-main {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+
+  .btn-outline-primary {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .container {
+    padding: 1.2rem 1rem;
+  }
+
+  .speedbox label {
+    font-size: 0.95rem;
+  }
+
+  .speedbox span {
+    font-size: 1rem;
   }
 }
-
