@@ -9,6 +9,21 @@
   </head>
   <body>
     <header><!-- 공통 헤더 --></header>
+    <!-- 회원가입 완료 모달 -->
+<div class="modal fade" id="signupSuccessModal" tabindex="-1" aria-labelledby="signupSuccessModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100" id="signupSuccessModalLabel">회원가입 완료</h5>
+      </div>
+      <div class="modal-body">
+        <p>환영합니다<br><strong id="modalUserName">000</strong> 님</p>
+        <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal"> <a href="../onboarding.html">닫기</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <main class="container py-5 d-flex flex-column justify-content-center align-items-center text-center flex-grow-1">
       <img src="../assets/images/ttikka.png" alt="회원가입 이미지" class="signup-img mb-4">
     
@@ -59,7 +74,8 @@
         </div>
     
         <!-- 가입하기 -->
-        <button type="submit" class="btn btn-primary w-100 rounded-pill">가입하기</button>
+      <button type="button" class="btn btn-primary w-100 rounded-pill" onclick="showSignupSuccess()">가입하기</button>
+
     
         <!-- 로그인 링크 -->
         <div class="text-center mt-3">
@@ -77,16 +93,23 @@
       const birthSelect = document.getElementById("birthYear");
       const currentYear = new Date().getFullYear();
       const startYear = 1950;
-      const endYear = currentYear - 15;
+      const endYear = currentYear - 10;
     
       for (let year = endYear; year >= startYear; year--) {
         const option = document.createElement("option");
         option.value = year;
         option.textContent = year + "년";
-        birthSelect.appendChild(option);
+        birthSelect.appendChild(option);      
       }
-    </script>
- 
 
+  function showSignupSuccess() {
+    const name = document.querySelector("input[placeholder='이름']").value || "회원";
+    document.getElementById("modalUserName").textContent = name;
+
+    const modal = new bootstrap.Modal(document.getElementById("signupSuccessModal"));
+    modal.show();
+  }
+    </script>
+    
   </body>
 </html>

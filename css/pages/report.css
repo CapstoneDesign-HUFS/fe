@@ -1,1 +1,4 @@
 /* report.css 스타일 */
+h1 {
+  font-size: var(--font-size-heading)
+}

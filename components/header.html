@@ -11,10 +11,27 @@
     <header><!-- 공통 헤더 --></header>
     <main class="container py-4">
       <!-- components/header.html -->
+      <!-- 로그아웃 모달 -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body py-4">
+        <p class="fw-semibold mb-3">로그아웃 하시겠습니까?</p>
+        <button type="button" class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-danger" onclick="location.href='../onboarding.html'">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- components/header.html -->
 <nav class="navbar navbar-expand-md bg-white border-bottom shadow-sm px-3">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="../pages/map-home.html">Run or Not?</a>
+    <a class="navbar-brand fw-bold" href="../pages/map-home.html">
+    <img src="../assets/images/ttikkaA.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+      Run or Not?
+
+    </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -26,10 +43,7 @@
           <a class="nav-link" href="../pages/mypage.html">마이페이지</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../pages/myreport.html">리포트</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../onboarding.html">로그아웃</a>
+          <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal">로그아웃</a>
         </li>
       </ul>
     </div>
@@ -41,5 +55,14 @@
     <footer><!-- 공통 푸터 --></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../js/common.js"></script>
+    <script>
+      function logout() {
+        // 로컬스토리지 초기화 (선택사항)
+        localStorage.clear();
+        // 페이지 이동
+        window.location.href = "../onboarding.html";
+      }
+    </script>
+    
   </body>
 </html>

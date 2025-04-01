@@ -26,6 +26,7 @@ Global Style Import
 @import url('./pages/mypage.css');
 @import url('./pages/report.css');
 @import url('./pages/terms.css');
+@import url('./pages/edit-info.css');
 
 
 /* override Bootstrap primary button 색상 */
