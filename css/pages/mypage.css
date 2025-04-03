@@ -1,5 +1,46 @@
-h2 {
-  font-size: var(--font-size-title);
-  font-weight:bold;
-}
+  /* ✅ 입력창/드롭다운: 연두 테두리 + 둥글게 */
+  .form-control,
+  .form-select {
+    border: 2px solid #c6e377 !important;
+    border-radius: 12px !important;
+    font-weight: bold;
+    background-color: #fff;
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #c6e377 !important;
+    box-shadow: none;
+  }
+
+  input[type="number"] {
+    border: 2px solid #c6e377 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0.3rem 0.5rem;
+    font-weight: bold;
+  }
+
+  .btn-primary,
+  .btn-outline-secondary {
+    background-color: #c6e377;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    border-radius: 999px;
+  }
+
+  .btn-outline-secondary {
+    background-color: #fff;
+    border: 2px solid #c6e377;
+  }
+
+  .btn-outline-secondary:hover {
+    background-color: #c6e377;
+    color: #000;
+  }
+
+  
+
+
 
