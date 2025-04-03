@@ -94,6 +94,23 @@
     birthSelect.appendChild(option);
   }
 </script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const minSpeed = localStorage.getItem('minSpeedValue');
+    const maxSpeed = localStorage.getItem('maxSpeedValue');
+
+    if (minSpeed && maxSpeed) {
+      const minInput = document.querySelector('input[type="number"]:nth-of-type(1)');
+      const maxInput = document.querySelector('input[type="number"]:nth-of-type(2)');
+
+      if (minInput && maxInput) {
+        minInput.value = minSpeed;
+        maxInput.value = maxSpeed;
+      }
+    }
+  });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/include.js"></script>
 <script src="../js/common.js"></script>

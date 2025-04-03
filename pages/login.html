@@ -1,66 +1,121 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
 
+  <header><!-- 공통 헤더 --></header>
 
-  </head>
-  <body>
-    <header><!-- 공통 헤더 --></header>
-    <main class="container py-5 d-flex flex-column justify-content-center align-items-center flex-grow-1">
-      <img src="../assets/images/ttikka.png" alt="로그인 이미지" class="login-img mb-4">
-    
-      <h2 class="login-title mb-4">로그인</h2>
-    
-      <form class="login-form w-100" style="max-width: 320px;" onsubmit="handleLogin(event)">
-        <div class="mb-3">
-          <label for="loginId" class="form-label">아이디</label>
-          <input type="text" class="form-control" id="loginId" placeholder="아이디를 입력하세요" required>
-        </div>
-      
-        <div class="mb-4 text-start position-relative">
-          <input type="password" class="form-control" id="passwordInput" placeholder="비밀번호를 입력하세요" required>
-          <i class="bi bi-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePassword()" style="cursor:pointer;"></i>
-        </div>
-      
-        <button type="submit" class="btn btn-primary w-100 rounded-pill">로그인</button>
-      </form>
-      
-    
-      <div class="mt-3">
-        <small class="text-muted">아직 회원이 아니신가요? <a href="signup.html">회원가입</a></small>
+  <main class="container py-5 d-flex flex-column justify-content-center align-items-center flex-grow-1">
+    <img src="../assets/images/ttikka.png" alt="로그인 이미지" class="login-img mb-4">
+    <h2 class="login-title mb-4">로그인</h2>
+
+    <form class="login-form w-100" style="max-width: 320px;" onsubmit="handleLogin(event)">
+      <div class="mb-3">
+        <label for="loginId" class="form-label">아이디</label>
+        <input type="text" class="form-control" id="loginId" placeholder="아이디를 입력하세요" required>
       </div>
-    </main>
-    
-<div id="footer"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../js/common.js"></script>
-<script>
-  function togglePassword() {
-    const passwordInput = document.getElementById("passwordInput");
-    const icon = document.querySelector(".toggle-password");
+      <div class="mb-4 position-relative">
+        <input type="password" class="form-control pe-5" id="passwordInput"
+               placeholder="비밀번호를 입력하세요" required
+               onkeyup="checkCapsLock(event)" onkeydown="checkCapsLock(event)">
+      
+        <!-- 눈 아이콘 고정 -->
+        <i class="bi bi-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"
+           onclick="togglePassword()" style="cursor:pointer;"></i>
+      </div>
+      
+      <!-- 캡스락 경고는 입력창 외부에 배치 -->
+      <div id="capsLockWarning" class="form-text text-danger ms-1 mb-3 d-none">
+        ⚠️ Caps Lock이 켜져 있습니다. 대소문자 입력에 주의하세요.
+      </div>
+      
 
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      icon.classList.remove("bi-eye");
-      icon.classList.add("bi-eye-slash");
-    } else {
-      passwordInput.type = "password";
-      icon.classList.remove("bi-eye-slash");
-      icon.classList.add("bi-eye");
+      <button type="submit" class="btn btn-primary w-100 rounded-pill">로그인</button>
+    </form>
+
+    <div class="mt-3">
+      <small class="text-muted">아직 회원이 아니신가요? <a href="signup.html">회원가입</a></small>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <!-- 비밀번호 불일치 모달 -->
+  <div class="modal fade" id="passwordMismatchModal" tabindex="-1" aria-labelledby="passwordMismatchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="passwordMismatchModalLabel">로그인 실패</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+        </div>
+        <div class="modal-body">
+          아이디 또는 비밀번호가 올바르지 않습니다.<br>다시 시도해주세요.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/include.js"></script>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("passwordInput");
+      const icon = document.querySelector(".toggle-password");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+      }
     }
-  }
-</script>
-<script src="../js/include.js"></script>
 
+    function checkCapsLock(event) {
+      const warning = document.getElementById("capsLockWarning");
+      const isCapsLock = event.getModifierState && event.getModifierState("CapsLock");
 
+      if (isCapsLock) {
+        warning.classList.remove("d-none");
+      } else {
+        warning.classList.add("d-none");
+      }
+    }
 
-  </body>
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const id = document.getElementById("loginId").value;
+      const pw = document.getElementById("passwordInput").value;
+
+      const validId = "testuser";
+      const validPw = "1234";
+
+      if (id === validId && pw === validPw) {
+        alert("로그인 성공!");
+        location.href = "map-home.html";
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById("passwordMismatchModal"));
+        modal.show();
+      }
+    }
+  </script>
+</body>
 </html>

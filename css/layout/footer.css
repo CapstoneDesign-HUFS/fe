@@ -2,7 +2,7 @@
 /* ===================
 Footer Style
    =================== */
-.footer {
+   .footer {
     background-color: var(--color-background);
     font-size: var(--font-size-sm);
     color: var(--color-muted);
